@@ -5,7 +5,7 @@ class Play extends Phaser.Scene{
     
     create() {
         score = 0;
-        time = 4.00;
+        time = 60.00;
         this.numRows = numRows;
         this.numColumns = numColumns;
         this.numColors = numColors;
@@ -102,7 +102,7 @@ class Play extends Phaser.Scene{
         });
         // timer
         this.Timer = this.time.addEvent({ 
-            delay: 30000, 
+            delay: 60000, 
             loop: false
         });
     
@@ -156,7 +156,7 @@ class Play extends Phaser.Scene{
                         nextDot.scaleDots();
                         this.targetGroup.push(nextDot);
                         this.connectLine(nextDot);  
-                    } else if (this.targetGroup.length >= 2) {
+                    } else if (this.targetGroup.length >2) {
                         // if make a loop, auto-complete the player selection
                         if(!this.isLoop && nextDot == this.targetGroup[0]) {
                             this.isLoop = true;
@@ -345,7 +345,7 @@ class Play extends Phaser.Scene{
     
     update() {
         if (!this.gameOver) {
-            time = ((30000 - this.Timer.getElapsed()) / 1000).toFixed(2);
+            time = ((60000 - this.Timer.getElapsed()) / 1000).toFixed(2);
             this.TimerText.setText('Timer : ' + time);
             // time is up
             if (time == 0) {
